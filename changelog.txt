@@ -1,0 +1,27 @@
+Instal Webpack & Plugins
+Webpack bundling enables dev-start
+Implement fetch RESTful API
+    Get Notes
+        Insert Dummy
+            Insert Bulk Dummy
+        Update Notes (force refresh)
+        Update Notes (refresh rate) <--x
+            Refresh Rate Checkbox <--x
+            Refresh Rate Slider <--x
+            Display Tooltip <--x
+    Insert Notes & Refresh
+    Remove Notes & Refresh
+        Remove Bulk Notes <--x
+        Checkboxes <--x
+    Archive Notes
+        Archiving Notes
+        Checkboxes <--x
+        Display Archive Notes
+Add Spinner Animation when Reloading
+Improve responsive mode on Redmi Note 4 <--
+Background
+    Background Image
+    Background change using local storage <--
+        Background color <--
+Dark Mode <--
+web components

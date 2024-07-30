@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: block;
+  background-image: url('./43478.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.buttons {
+  display: flex;
+}
