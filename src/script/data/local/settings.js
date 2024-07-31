@@ -1,7 +1,7 @@
 const dataSettings = {
   colors: {
     fallbackDefaultNoteColor: '#FFFA99',
-    defaultNoteColor: 'rgba(255,250,153,0.8)',
+    defaultNoteColor: 'rgb(255,250,153)',
     additionNotes: 'lightgray',
     additionNotesHover: 'aqua',
     buttonColor: 'aqua',
@@ -11,7 +11,7 @@ const dataSettings = {
     secretActButtonColor: 'red',
     titleFallbackColor: 'aqua',
     titleColor:
-      'radial-gradient(circle, rgb(76,252,69) 0%, rgb(253,29,29) 75%, rgb(131,58,180) 100%)',
+      ' radial-gradient(circle, rgb(72,69,252) 0%, rgba(29,253,239) 79%, rgba(72,69,252) 100%);',
     titleArchiveColor: '#096ff5',
   },
   fetchData: {

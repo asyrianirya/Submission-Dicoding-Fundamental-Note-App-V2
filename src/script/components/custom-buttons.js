@@ -1,6 +1,6 @@
 import Utils from './utils.js';
 import { home } from '../view-controller.js';
-import './_parts-index.js';
+import { GlobalCss } from './_parts-index.js';
 
 class CustomButtons extends HTMLElement {
   _shadowRoot = null;
@@ -17,10 +17,10 @@ class CustomButtons extends HTMLElement {
     this._style.textContent = `
         :host {
         }
-        button {
+       /*  button {
           padding: 10px;
           margin: 5px;
-          border-radius: 10px 10px 10px 10px;
+          border-radius: 50%;
           border: 1px solid black;
           background-color: ${Utils.getSettings('colors', 'buttonColor')};
           transition: background-color 0.2s;
@@ -28,11 +28,17 @@ class CustomButtons extends HTMLElement {
           z-index: 0;
         }
 
-    button:hover { background-color: ${Utils.getSettings(
-      'colors',
-      'buttonColorHover',
-    )};
-    }
+      button:hover { background-color: ${Utils.getSettings(
+        'colors',
+        'buttonColorHover',
+      )};
+    } */
+      button {
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+        cursor: pointer;
+      }
       `;
   }
 
@@ -50,6 +56,7 @@ class CustomButtons extends HTMLElement {
 
     this._shadowRoot.appendChild(this._style);
     this._shadowRoot.innerHTML += `      
+      <g-css></g-css>
         <button id="switchpage">SHOW ARCHIVED NOTES</button>
     `;
 

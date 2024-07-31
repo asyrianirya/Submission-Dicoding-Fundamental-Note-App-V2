@@ -1,11 +1,13 @@
 import githubMark from '../../styles/github-mark-white.svg';
 import starMark from '../../styles/star-svgrepo-com.svg';
+import panTool from '../../styles/pan_tool.svg';
 
 class FooterSection extends HTMLElement {
   _shadowRoot = null;
   _style = null;
   _githubMark = githubMark;
   _starMark = starMark;
+  _panTool = panTool;
 
   constructor() {
     super();
@@ -98,6 +100,12 @@ class FooterSection extends HTMLElement {
                     <img src="${this._starMark}" ></img>
                 </div>
                 <span>Review my project</span>
+              </a>
+              <a  title="Pengantar cepat" href="" class="link">
+                <div class="img-container">
+                    <img src="${this.panTool}" ></img>
+                </div>
+                <span>Quick Introduce</span>
               </a>
             </div>
           </div>

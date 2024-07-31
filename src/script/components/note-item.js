@@ -1,6 +1,9 @@
 import Utils from './utils.js';
 import { mainNotes } from '../data-index.js';
 import { home } from '../view-controller.js';
+import '@fontsource-variable/edu-tas-beginner';
+import '@fontsource-variable/merienda';
+
 
 class NoteItem extends HTMLElement {
   _shadowRoot = null;
@@ -42,28 +45,31 @@ class NoteItem extends HTMLElement {
           
           box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
           overflow: hidden;
-          transition: border-radius 0.5s;
+          opacity: 1;
+          transition: border-radius 0.5s, opacity 0.5s;
+          padding: 10px;
         }
         .card {
-          position: relative;
-          padding: 10px;
-          opacity: 1;
-          transition: opacity 0.5s;
+          height: 100%;
         }
         :host(:hover){
-          border-radius: 20px 20px 0px 20px;
+          border-radius: 20px 0px 0px 20px;
+          opacity: 1;
         }
         .note-info {
           display: flex;
           flex-direction: column;
           height: 100%;
-          position: relative;
+          justify-content: space-between;
         }
         .note-info__title h2 {
           overflow-wrap: break-word;
+          font-family: 'Merienda Variable', cursive;
         }
         .note-info__description p {
           overflow-wrap: anywhere;
+          font-family: 'Edu TAS Beginner Variable', cursive;
+          font-size: 30px;
         }
         .note-info__created-at {
         }
@@ -85,6 +91,8 @@ class NoteItem extends HTMLElement {
         .note-info__delete button:hover {
           background-color: ${this._negativeButtonHover};
         }
+
+        
   `;
 
   _updateStyle() {

@@ -1,4 +1,7 @@
 import Utils from './utils.js';
+import '@fontsource/bebas-neue';
+import note_stack from '../../styles/note_stack.svg';
+import { GlobalCss } from './_parts-index.js';
 
 class TitleBar extends HTMLElement {
   _shadowRoot = null;
@@ -21,7 +24,6 @@ class TitleBar extends HTMLElement {
     this._style.textContent = `
         :host {
             display: flex;
-            position: sticky;
             top: 0;
             width: 100%;
             background-color: ${Utils.getSettings('colors', 'titleFallbackColor')};
@@ -30,14 +32,10 @@ class TitleBar extends HTMLElement {
             border: 5px solid black;
         }
   
-        div {
-            padding: 24px 20px;
-        }
-  
         .brand-name {
             margin: 0;
         
-            font-size: 1.7em;
+            font-family: 'Bebas Neue', cursiva;
         }
         #header {
           display: flex;
@@ -46,8 +44,33 @@ class TitleBar extends HTMLElement {
           width: 100%;
         }
 
+        .header-title {
+          display: flex;
+        }
+
+        .brand-name {
+          overflow-wrap: break-word;
+          font-size: 3rem;
+          animation: myAnim 2s ease 0s 1 normal forwards;
+          animation-iteration-count: 1;
+        }
+        @keyframes myAnim {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.2); }
+          100% { transform: scale(1); }
+        }
+
+        .img-container {
+          display: flex;
+          align-items: center;
+          width: 4rem;
+        }
+        .img-container img {
+          width: 100%;
+        }
+
       `;
-  }a
+  }
 
   get title() {
     return this._title;
@@ -96,9 +119,15 @@ class TitleBar extends HTMLElement {
     this._updateStyle();
     this._shadowRoot.appendChild(this._style);
     this._shadowRoot.innerHTML += `      
-        <div id="header" class="header">
+    <g-css></g-css>
+        <div id="header" class="header prevent-select">
           <div class="header-title">
+            <div class="img-container">
+              <img src="${note_stack}" draggable="false" ></img>
+            </div>
+            <div class="title">
             <h1 class="brand-name">${this._title}</h1>
+            </div>
           </div>
           <div class="header-toolsets">
             <slot></slot>

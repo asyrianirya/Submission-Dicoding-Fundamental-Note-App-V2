@@ -1,3 +1,4 @@
+
 class FooterBar extends HTMLElement {
   _shadowRoot = null;
   _style = null;

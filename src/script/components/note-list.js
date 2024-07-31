@@ -24,6 +24,7 @@ class NoteList extends HTMLElement {
         gap: 1rem;
         padding: 2rem;
       }
+
     `;
   }
 

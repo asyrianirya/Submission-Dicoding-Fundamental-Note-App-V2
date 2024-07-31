@@ -1,8 +1,8 @@
 import Utils from './utils.js';
-import notepadIco from '../../styles/notepad.png';
+import addNoteIco from '../../styles/add_notes.svg';
 import { mainNotes, Notes } from '../data-index.js';
 import { home } from '../view-controller.js';
-import './_parts-index.js';
+import { BackStage, GlobalCss } from './_parts-index.js';
 
 class EditList extends HTMLElement {
   _shadowRoot = null;
@@ -28,22 +28,6 @@ class EditList extends HTMLElement {
       margin: 0px;
     }
 
-    button {
-      padding: 10px;
-      margin: 5px;
-      border-radius: 10px 10px 10px 10px;
-      border: 1px solid black;
-      background-color: ${Utils.getSettings('colors', 'buttonColor')};
-      transition: background-color 0.2s;
-      text-decoration: none;
-      z-index: 0;
-    }
-
-    button:hover { background-color: ${Utils.getSettings(
-      'colors',
-      'buttonColorHover',
-    )};
-    }
     .form-container {
       display: flex;
       position: absolute;
@@ -133,7 +117,7 @@ class EditList extends HTMLElement {
       display: flex;
       align-items: center;
     }
-    #close {
+    .button-container button {
       border-radius: 0px 0px;
       height: 100%;
       margin: 0;
@@ -148,18 +132,36 @@ class EditList extends HTMLElement {
       height: 2rem;
       width: 2rem;
     }
-    #close:hover {
+    .button-container button:hover {
       background-color: rgba(255,0,0,0.7);
     }
     h1 { 
       margin: 0;
       margin-bottom: 10px;
     }
-    .prevent-select {
-        -webkit-user-select: none; /* Safari */
-        -ms-user-select: none; /* IE 10 and IE 11 */
-        user-select: none; /* Standard syntax */
+      button {
+        cursor: pointer;
+        -webkit-user-select: none; 
+        -ms-user-select: none; 
+        user-select: none;
       }
+
+      .animates {
+        animation: myAnim 2s ease 0s 1 normal forwards;
+      }
+
+      @keyframes myAnim {
+          0%,
+          50%,
+          100% {
+            opacity: 1;
+          }
+
+          25%,
+          75% {
+            opacity: 0;
+          }
+        }
     
         `;
   }
@@ -184,8 +186,9 @@ class EditList extends HTMLElement {
 
     this._shadowRoot.appendChild(this._style);
     this._shadowRoot.innerHTML += `
+    <g-css></g-css>
     <div class="insert-container">
-        <div class="action-container prevent-select">
+        <div class="action-container ">
             <button title="Add Notes" id="insert">INSERT NOTES</button>
             <button title="Dummy Notes" id="insert_dummy">INSERT DUMMY NOTES</button>
         </div>
@@ -194,7 +197,7 @@ class EditList extends HTMLElement {
         <div class="title-bar">
           <div class="label-logo-container">
             <div class="logo-container">
-              <img src="${notepadIco}"></img>
+              <img src="${addNoteIco}"></img>
             </div>
             <p>Insert Notes</p>
           </div>
@@ -363,6 +366,8 @@ class EditList extends HTMLElement {
       formClose();
     });
 
+    
+
     insertDummyButton.addEventListener('click', (e) => {
       moduleNotes
         .insertNote({ title: 'DUMMY NOTES', body: 'THIS IS DUMMY NOTES' })
@@ -402,6 +407,8 @@ class EditList extends HTMLElement {
       insertDummyButton.style.backgroundColor = '';
       insertDummyButton.disabled = false;
     });
+
+
   }
 }
 
