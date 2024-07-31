@@ -2,6 +2,8 @@ const path = require('path');
 const Swal = require('sweetalert2');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: './src/app.js',
@@ -12,13 +14,22 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/i,
+        
+        test: /\.(css|scss)$/,
         use: [
-          {
-            loader: 'style-loader',
-          },
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
+            options: {
+              importLoaders: 2,
+              sourceMap: true,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
+            },
           },
         ],
       },
@@ -27,15 +38,17 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.woff$/i,
+        test: /\.(woff|woff2|ttf|eot|svg)$/i,
         type: 'asset/resource',
-        use: [
-          {
-            loader: 'file-loader',
-            dependency: { not: ['url'] },
-          },
-        ],
       },
+    ],
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        parallel: true,
+      }),
     ],
   },
   plugins: [
@@ -51,6 +64,10 @@ module.exports = {
       favicons: {
         icons: {},
       },
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
   ],
 };
