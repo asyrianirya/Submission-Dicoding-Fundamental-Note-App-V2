@@ -8,7 +8,7 @@
 <h1>Features</h1>
 <p>This app includes:</p>
 <ul>
- <li>Least layouting css grid</li>
+ <li>Layouting css grid</li>
  <li>Web components & Applying shadow DOM</li>
  <li>Package manager</li>
  <li>Module bundler</li>
