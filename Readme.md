@@ -12,5 +12,5 @@
  <li>Web components & Applying shadow DOM</li>
  <li>Package manager</li>
  <li>Module bundler</li>
- <li>AJAX (Asynchronous JavaScript Request)</li>
+ <li>AJAX (Asynchronous JavaScript Request) FETCH API GET, POST, PUT, DELETE</li>
 </ul>
